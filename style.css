@@ -1,0 +1,416 @@
+/* ==========================================================
+   FUNDAÇÃO SCP — style.css
+   Estética: terminal retrô, militarizado, minimalista
+   ========================================================== */
+
+/* ---------- Tokens ---------- */
+:root {
+  --preto:        #000000;
+  --cinza-fundo:  #1b1b1b;
+  --cinza-painel: #2a2a2a;
+  --cinza-borda:  #4a4a4a;
+  --branco:       #e8e8e8;
+  --cinza-texto:  #9a9a9a;
+  --vermelho:     #c8102e;
+  --vermelho-vivo:#ff2a2a;
+
+  --fonte: "Courier New", Courier, "Lucida Console", monospace;
+
+  --texto-p:  0.875rem;
+  --texto-m:  1rem;
+  --texto-g:  1.5rem;
+  --texto-xg: 2.25rem;
+
+  --espaco-1: 0.25rem;
+  --espaco-2: 0.5rem;
+  --espaco-3: 1rem;
+  --espaco-4: 1.5rem;
+  --espaco-5: 2.5rem;
+
+  --largura-max: 72rem;
+  --altura-cabecalho: 4.5rem;
+}
+
+/* ---------- Reset ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--preto);
+  color: var(--branco);
+  font-family: var(--fonte);
+  font-size: var(--texto-m);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+svg,
+video,
+audio {
+  display: block;
+  max-width: 100%;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+/* ---------- Tipografia ---------- */
+h1, h2, h3, h4 {
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+}
+
+h1 { font-size: var(--texto-xg); }
+h2 { font-size: var(--texto-g); }
+h3 { font-size: var(--texto-m); color: var(--vermelho); }
+
+p {
+  max-width: 70ch;
+}
+
+a {
+  color: var(--branco);
+  text-decoration: underline;
+  text-decoration-color: var(--vermelho);
+  text-underline-offset: 0.2em;
+}
+
+a:hover {
+  color: var(--vermelho-vivo);
+}
+
+::selection {
+  background: var(--vermelho);
+  color: var(--branco);
+}
+
+/* ---------- Acessibilidade ---------- */
+:focus-visible {
+  outline: 2px solid var(--vermelho-vivo);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ---------- Layout ---------- */
+.cabecalho {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--espaco-3);
+  min-height: var(--altura-cabecalho);
+  padding: var(--espaco-2) var(--espaco-4);
+  background: var(--cinza-painel);
+  border-bottom: 2px solid var(--cinza-borda);
+}
+
+.faixa-listrada {
+  height: 0.75rem;
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--preto) 0 0.5rem,
+    var(--cinza-borda) 0.5rem 1rem
+  );
+}
+
+.principal {
+  width: min(100% - 2rem, var(--largura-max));
+  margin-inline: auto;
+  padding-block: var(--espaco-5);
+}
+
+.painel {
+  background: var(--cinza-fundo);
+  border: 1px solid var(--cinza-borda);
+  padding: var(--espaco-3);
+}
+
+.rodape {
+  padding: var(--espaco-4);
+  border-top: 1px solid var(--cinza-borda);
+  color: var(--cinza-texto);
+  font-size: var(--texto-p);
+}
+
+/* ---------- Componentes ---------- */
+.botao {
+  display: inline-block;
+  padding: var(--espaco-2) var(--espaco-4);
+  background: transparent;
+  border: 1px solid var(--branco);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.botao:hover {
+  background: var(--vermelho);
+  border-color: var(--vermelho);
+  color: var(--branco);
+}
+
+.botao--perigo {
+  border-color: var(--vermelho);
+  color: var(--vermelho-vivo);
+}
+
+.texto-vermelho { color: var(--vermelho); }
+.texto-suave    { color: var(--cinza-texto); }
+.oculto         { display: none !important; }
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 40rem) {
+  :root {
+    --texto-xg: 1.75rem;
+    --texto-g:  1.25rem;
+  }
+
+  .cabecalho {
+    padding-inline: var(--espaco-3);
+  }
+}
+
+/* ==========================================================
+   PÁGINA DE ITEM SCP (scp-002.html e similares)
+   ========================================================== */
+.marca {
+  color: var(--branco);
+  font-weight: 700;
+  font-size: var(--texto-g);
+  letter-spacing: 0.12em;
+  text-decoration: none;
+}
+
+.documento {
+  max-width: 60rem;
+}
+
+.documento h1 {
+  margin-bottom: var(--espaco-4);
+  padding-bottom: var(--espaco-2);
+  border-bottom: 2px solid var(--vermelho);
+}
+
+.imagem {
+  float: right;
+  width: min(100%, 18.75rem);
+  margin: 0 0 var(--espaco-3) var(--espaco-4);
+  background: var(--cinza-fundo);
+  border: 1px solid var(--cinza-borda);
+}
+
+.imagem-espaco {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 4 / 3;
+  padding: var(--espaco-3);
+  color: var(--cinza-texto);
+  font-size: var(--texto-p);
+  text-align: center;
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--preto) 0 0.5rem,
+    var(--cinza-fundo) 0.5rem 1rem
+  );
+}
+
+.imagem figcaption {
+  padding: var(--espaco-2);
+  border-top: 1px solid var(--cinza-borda);
+  font-size: var(--texto-p);
+  color: var(--cinza-texto);
+}
+
+.ficha {
+  margin-bottom: var(--espaco-4);
+}
+
+.campo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espaco-2);
+}
+
+.campo dt {
+  font-weight: 700;
+}
+
+.secao {
+  margin-bottom: var(--espaco-4);
+}
+
+.secao h2 {
+  margin-bottom: var(--espaco-2);
+  font-size: var(--texto-m);
+  color: var(--vermelho);
+}
+
+.secao p + p {
+  margin-top: var(--espaco-3);
+}
+
+.relatorio {
+  clear: both;
+  margin-block: var(--espaco-4);
+  border: 1px solid var(--cinza-borda);
+  background: var(--cinza-fundo);
+}
+
+.relatorio summary {
+  padding: var(--espaco-2) var(--espaco-3);
+  cursor: pointer;
+  color: var(--vermelho-vivo);
+}
+
+.relatorio[open] summary {
+  border-bottom: 1px solid var(--cinza-borda);
+}
+
+.relatorio-corpo {
+  padding: var(--espaco-3);
+}
+
+.relatorio-corpo h3 {
+  margin-bottom: var(--espaco-2);
+}
+
+.relatorio-corpo p + p {
+  margin-top: var(--espaco-3);
+}
+
+.redigido {
+  background: var(--branco);
+  color: var(--preto);
+  padding-inline: var(--espaco-1);
+}
+
+.navegacao-scp {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--espaco-3);
+  margin-top: var(--espaco-5);
+  padding-top: var(--espaco-3);
+  border-top: 1px solid var(--cinza-borda);
+}
+
+.rodape p + p {
+  margin-top: var(--espaco-1);
+}
+
+.imagem img {
+  width: 100%;
+  height: auto;
+}
+
+.data {
+  color: var(--vermelho);
+}
+
+.secao p strong.data {
+  letter-spacing: 0.02em;
+}
+
+.secao h3 {
+  margin-bottom: var(--espaco-3);
+  padding-bottom: var(--espaco-1);
+  border-bottom: 1px solid var(--cinza-borda);
+}
+
+/* Aviso de acesso restrito (ex.: scp-006.html) */
+.aviso-acesso {
+  margin-bottom: var(--espaco-4);
+  padding: var(--espaco-3);
+  border: 2px solid var(--vermelho);
+  background: var(--cinza-fundo);
+  text-align: center;
+}
+
+.aviso-titulo {
+  max-width: none;
+  font-weight: 700;
+}
+
+.aviso-status {
+  max-width: none;
+  margin-top: var(--espaco-2);
+  color: var(--vermelho-vivo);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+/* Bloco de credenciais (ex.: scp-008.html) */
+.credenciais summary {
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.credenciais .rotulo-aberto,
+.credenciais[open] .rotulo-fechado {
+  display: none;
+}
+
+.credenciais[open] .rotulo-aberto {
+  display: inline;
+  color: var(--branco);
+}
+
+.credenciais .relatorio-corpo::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.credenciais .relatorio-corpo h1 {
+  margin-bottom: var(--espaco-4);
+  padding-bottom: var(--espaco-2);
+  border-bottom: 2px solid var(--vermelho);
+}
+
+.credenciais .relatorio-corpo h2 {
+  color: var(--vermelho);
+}
+
+/* Listas dentro do texto */
+.lista {
+  margin: var(--espaco-2) 0 var(--espaco-3);
+  padding-left: var(--espaco-4);
+  list-style: square;
+}
+
+.lista li + li {
+  margin-top: var(--espaco-1);
+}
+
+.lista li::marker {
+  color: var(--vermelho);
+}
