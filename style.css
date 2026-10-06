@@ -414,3 +414,25 @@ a:hover {
 .lista li::marker {
   color: var(--vermelho);
 }
+
+/* Citações e bilhetes dentro do texto */
+.documento blockquote {
+  margin: var(--espaco-3) 0;
+  border-left: 3px solid var(--vermelho);
+}
+
+.documento blockquote p + p {
+  margin-top: var(--espaco-1);
+}
+
+/* Aviso de página arquivada (ex.: scp-132.html) */
+.aviso-arquivo {
+  margin-bottom: var(--espaco-4);
+  border-left: 3px solid var(--vermelho);
+  font-size: var(--texto-p);
+  color: var(--cinza-texto);
+}
+
+.aviso-arquivo p {
+  max-width: none;
+}
