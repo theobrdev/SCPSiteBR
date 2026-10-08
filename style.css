@@ -436,3 +436,67 @@ a:hover {
 .aviso-arquivo p {
   max-width: none;
 }
+
+/* Índice: listas de itens e títulos de seção */
+.lista-itens {
+  margin-top: var(--espaco-3);
+}
+
+.lista-itens li {
+  padding: var(--espaco-1) 0;
+  border-bottom: 1px solid var(--cinza-borda);
+}
+
+.titulo-secao {
+  margin-top: var(--espaco-5);
+  padding-bottom: var(--espaco-2);
+  border-bottom: 2px solid var(--vermelho);
+  letter-spacing: 0.12em;
+}
+
+/* Tabela de dados (ex.: scp-040.html) */
+.tabela-ficha {
+  float: right;
+  width: min(100%, 24rem);
+  margin: 0 0 var(--espaco-3) var(--espaco-4);
+  border-collapse: collapse;
+  background: var(--cinza-fundo);
+  font-size: var(--texto-p);
+}
+
+.tabela-ficha th,
+.tabela-ficha td {
+  padding: var(--espaco-1) var(--espaco-2);
+  border: 1px solid var(--cinza-borda);
+  text-align: left;
+  vertical-align: top;
+}
+
+.tabela-ficha th {
+  color: var(--vermelho);
+  white-space: nowrap;
+}
+
+/* Notas de rodapé */
+.notas {
+  clear: both;
+  margin-top: var(--espaco-4);
+  padding-top: var(--espaco-2);
+  border-top: 1px solid var(--cinza-borda);
+  font-size: var(--texto-p);
+  color: var(--cinza-texto);
+}
+
+@media (max-width: 40rem) {
+  .tabela-ficha {
+    float: none;
+    margin-left: 0;
+  }
+}
+
+/* Segunda imagem menor, à esquerda (ex.: scp-036.html) */
+.imagem--esquerda {
+  float: left;
+  width: min(100%, 9.5rem);
+  margin: 0 var(--espaco-4) var(--espaco-3) 0;
+}
